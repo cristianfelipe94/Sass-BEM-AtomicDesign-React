@@ -1,3 +1,84 @@
-.App-header {
-  background-color: white;
+//Background variables
+//////////////////////
+$background-color: #ebebeb;
+
+// Variables letters
+////////////////////
+$letter-red: #e44134;
+$letter-green: #33a351;
+$letter-blue: #4081ed;
+$letter-yellow: #f4b705;
+
+body {
+  background-color: $background-color;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  background-color: lightblue;
+  width: 100%;
+
+  .navigation__top {
+    background-color: lightcyan;
+    display: flex;
+    flex-direction: row;
+
+    .username {
+
+      .username__letter {
+
+        &--blue {
+          color: $letter-blue;
+        }
+
+        &--red {
+          color: $letter-red;
+        }
+
+        &--yellow {
+          color: $letter-yellow;
+        }
+
+        &--green {
+          color: $letter-green;
+        }
+      }
+    }
+
+    .searchbar {
+      background-color: lightsteelblue;
+      display: flex;
+      flex-direction: row;
+      width: 60vw;
+      margin: 0 20vw 0 5vw;
+    }
+  }
+
+  .navigation__bottom {
+    display: flex;
+    flex-direction: row;
+    width: 60vw;
+    margin: 0 0 0 10vw;
+  }
+
+  .navigation__bottom--left {
+    background-color: lightskyblue;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .navigation__bottom--right {
+    background-color: lightpink;
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  margin: 0 0 0 10vw;
+  background-color: lightslategrey;
 }

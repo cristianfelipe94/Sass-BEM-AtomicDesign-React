@@ -2,8 +2,13 @@ import React from 'react';
 import './index.scss';
 
 function App() {
+
+  // Spell your username
+  // ////////////////////
   const profileLetters = ["g","o","o","g","l","e"];
 
+  // Add your Portfolio filling this object.
+  // ////////////////////
   const porfolioResults = [
     {
       url: "www.porfolioOne.com",
@@ -27,14 +32,32 @@ function App() {
     },
   ]
 
+  // This function will load your username
+  // Also will change letter color from Username
   const profileName = () => {
+    const colorPattern = ["username__letter--blue","username__letter--red","username__letter--yellow","username__letter--green"];
+
+    let starterIndex = 0;
     const renderName = profileLetters.map((letter) => {
-      return <span>{letter}</span>
+
+      if (starterIndex < 4) {
+        let classSetup = colorPattern[starterIndex];
+        starterIndex = starterIndex + 1;
+  
+        return <span className={classSetup}>{letter}</span>
+      } else {
+        starterIndex = 0;
+        let classSetup = colorPattern[starterIndex];
+  
+        return <span className={classSetup}>{letter}</span>
+      }
+
     })
 
     return renderName;
   }
 
+  // This function will load portfolio
   const renderPortfolio = () => {
     const portfolioGroup = porfolioResults.map((portfolio) => {
       return (
