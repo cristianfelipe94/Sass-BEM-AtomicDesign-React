@@ -6,7 +6,7 @@ function App() {
 
   // Spell your username
   // ////////////////////
-  const profileLetters = ["g","o","o","g","l","e"];
+  const profileLetters = "Felipe".split("");
 
   // Add your Portfolio filling this object.
   // ////////////////////
@@ -79,7 +79,7 @@ function App() {
           <p className="username">{profileName()}</p>
 
           <div className="searchbar">
-            <input className="searchbar__input" placeholder="Search Google or type a URL"></input>
+            <input className="searchbar__input" placeholder="Search for a portfolio or project"></input>
             <span className="icon icon--x"></span>
             <hr className="separator separator--vertical"></hr>
             <span className="icon icon--voice"></span>
