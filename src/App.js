@@ -1,4 +1,5 @@
 import React from 'react';
+import NavigationBottom from './NavigationBottom';
 import './index.scss';
 
 function App() {
@@ -38,18 +39,18 @@ function App() {
     const colorPattern = ["username__letter--blue","username__letter--red","username__letter--yellow","username__letter--green"];
 
     let starterIndex = 0;
-    const renderName = profileLetters.map((letter) => {
+    const renderName = profileLetters.map((letter, index) => {
 
       if (starterIndex < 4) {
         let classSetup = colorPattern[starterIndex];
         starterIndex = starterIndex + 1;
   
-        return <span className={classSetup}>{letter}</span>
+      return <span className={classSetup} key={`${letter}-${index}`}>{letter}</span>
       } else {
         starterIndex = 0;
         let classSetup = colorPattern[starterIndex];
   
-        return <span className={classSetup}>{letter}</span>
+        return <span className={classSetup} key={`${letter}-${index}`}>{letter}</span>
       }
 
     })
@@ -59,12 +60,12 @@ function App() {
 
   // This function will load portfolio
   const renderPortfolio = () => {
-    const portfolioGroup = porfolioResults.map((portfolio) => {
+    const portfolioGroup = porfolioResults.map((portfolio, index) => {
       return (
-        <div className="content__portfolio_item">
-          <p>{portfolio.url}</p>
-          <h2>{portfolio.title}</h2>
-          <p>{portfolio.description}</p>
+        <div className="portfolio__item" key={`${portfolio.title}-${index}`}>
+          <p className="portfolio__item-url">{portfolio.url}</p>
+          <h2 className="portfolio__item-title">{portfolio.title}</h2>
+          <p className="portfolio__item-description">{portfolio.description}</p>
         </div>
       )
     });
@@ -75,49 +76,30 @@ function App() {
     <div className="App">
       <div className="navigation">
         <div className="navigation__top">
-          <div className="username">
-            <p>{profileName()}</p>
-          </div>
+          <p className="username">{profileName()}</p>
 
           <div className="searchbar">
-            <input placeholder="Search Google or type a URL"></input>
-            <div className="icon icon--x">Clean</div>
+            <input className="searchbar__input" placeholder="Search Google or type a URL"></input>
+            <span className="icon icon--x"></span>
             <hr className="separator separator--vertical"></hr>
-            <div className="icon icon--voice">Voice</div>
-            <div className="icon icon--search">Search</div>
+            <span className="icon icon--voice"></span>
+            <span className="icon icon--search"></span>
           </div>
 
           <div className="profile">
-            <div class="icon icon--menu">Menu</div>
-            <div class="icon icon--account">Account</div>
+            <span className="icon icon--menu"></span>
+            <span className="icon icon--account"></span>
           </div>
         </div>
 
         <div className="navigation__bottom">
           <div className="navigation__bottom--left">
-            <div>
-              <p><span>Icon</span>All</p>
-            </div>
-            <div>
-              <p><span>Icon</span>Images</p>
-            </div>
-            <div>
-              <p><span>Icon</span>Videos</p>
-            </div>
-            <div>
-              <p><span>Icon</span>News</p>
-            </div>
-            <div>
-              <p><span>Icon</span>Books</p>
-            </div>
-            <div>
-              <p><span>Icon</span>More</p>
-            </div>
+            <NavigationBottom/>
           </div>
 
           <div className="navigation__bottom--right">
-              <p><span>Icon</span>Settings</p>
-              <p><span>Icon</span>Tools</p>
+              <p class="navigation__bottom_label">Settings</p>
+              <p class="navigation__bottom_label">Tools</p>
           </div>
         </div>
       </div>
