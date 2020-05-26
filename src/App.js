@@ -87,7 +87,6 @@ function App() {
           </div>
 
           <div className="profile">
-            <span className="icon icon--menu"></span>
             <span className="icon icon--account"></span>
           </div>
         </div>
@@ -98,8 +97,8 @@ function App() {
           </div>
 
           <div className="navigation__bottom--right">
-              <p class="navigation__bottom_label">Settings</p>
-              <p class="navigation__bottom_label">Tools</p>
+              <p className="navigation__bottom_label">Settings</p>
+              <p className="navigation__bottom_label">Tools</p>
           </div>
         </div>
       </div>

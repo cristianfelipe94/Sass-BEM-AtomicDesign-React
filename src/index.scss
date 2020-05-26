@@ -21,16 +21,29 @@ body {
   display: flex;
   flex-direction: column;
   padding: 5vh 2vh 0 2vh;
-  background-color: $background-color;
+  max-width: 1024px;
+  margin: 0 auto;
 
   .navigation__top {
     display: flex;
     flex-direction: row;
-    margin: 0 0 10px 0;
+    padding: 0 0 10px 0;
+    background-color: white;
+    z-index: 2;
+
+    @media only screen and (max-width: 780px) {
+      padding: 0 0 20px 0;
+    }
 
     .username {
       font-size: 33px;
       margin: 0 0 0 1vw;
+      transition: font-size 0.5s;
+
+      @media only screen and (max-width: 780px) {
+        font-size: 24px;
+        transition: font-size 0.5s;
+      }
 
       .username__letter {
 
@@ -88,8 +101,6 @@ body {
   .navigation__bottom {
     display: flex;
     flex-direction: row;
-    width: 70vw;
-    margin: 0 0 0 15vw;
 
     &_tab {
       display: flex;
@@ -124,12 +135,23 @@ body {
       width: 16px;
       height: 16px;
     }
+
+    @media only screen and (max-width: 780px){
+      width: 65%;
+      overflow: hidden;
+      overflow-x: auto;
+    }
   }
 
   .navigation__bottom--right {
     display: flex;
     flex-direction: row;
     padding: 0 1vw;
+
+    @media only screen and (max-width: 780px){
+      box-shadow: -2px 0px 3px 0px rgba(32,33,36,0.28);
+      border-color: rgba(223,225,229,0);
+    }
   }
 
   .separator {
@@ -155,8 +177,12 @@ body {
 .content {
   display: flex;
   flex-direction: column;
-  width: 60vw;
-  margin: 0 0 0 18vw;
+  margin: 0 auto;
+  max-width: 1024px;
+
+  @media only screen and (max-width: 780px) {
+    padding: 0 2vh 0 2vh;
+  }
 
   &__intro {
     color: #70757a;
@@ -213,7 +239,7 @@ body {
     background-image: url("./assets/profile/userphoto.jpg");
     height: 32px;
     width: 32px;
-    border-radius: 50% 50%;
+    border-radius: 32px;
     background-size: cover;
     transform: scale(1);
     transition: 0.5s;
@@ -222,9 +248,5 @@ body {
       transform: scale(1.3);
       transition: 0.5s;
     }
-  }
-
-  &.icon--menu {
-    background-image: url("./assets/icon/icon--menu.svg");
   }
 }
