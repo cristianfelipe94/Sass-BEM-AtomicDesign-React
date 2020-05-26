@@ -9,6 +9,10 @@ $letter-green: #33a351;
 $letter-blue: #4081ed;
 $letter-yellow: #f4b705;
 
+// Media Queries
+/////////////////
+$media-mobile: 780px;
+
 // Formatters
 body {
   background-color: white;
@@ -31,7 +35,7 @@ body {
     background-color: white;
     z-index: 2;
 
-    @media only screen and (max-width: 780px) {
+    @media only screen and (max-width: $media-mobile) {
       padding: 0 0 20px 0;
     }
 
@@ -40,7 +44,7 @@ body {
       margin: 0 0 0 1vw;
       transition: font-size 0.5s;
 
-      @media only screen and (max-width: 780px) {
+      @media only screen and (max-width: $media-mobile) {
         font-size: 24px;
         transition: font-size 0.5s;
       }
@@ -136,7 +140,7 @@ body {
       height: 16px;
     }
 
-    @media only screen and (max-width: 780px){
+    @media only screen and (max-width: $media-mobile){
       width: 65%;
       overflow: hidden;
       overflow-x: auto;
@@ -148,7 +152,7 @@ body {
     flex-direction: row;
     padding: 0 1vw;
 
-    @media only screen and (max-width: 780px){
+    @media only screen and (max-width: $media-mobile){
       box-shadow: -2px 0px 3px 0px rgba(32,33,36,0.28);
       border-color: rgba(223,225,229,0);
     }
@@ -179,10 +183,7 @@ body {
   flex-direction: column;
   margin: 0 auto;
   max-width: 1024px;
-
-  @media only screen and (max-width: 780px) {
-    padding: 0 2vh 0 2vh;
-  }
+  padding: 0 2vh 0 2vh;
 
   &__intro {
     color: #70757a;
