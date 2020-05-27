@@ -1,37 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import NavigationBottom from './NavigationBottom';
 import './index.scss';
 
 function App() {
 
+  const [renderData, setRenderData] = useState([]);
+
   // Spell your username
   // ////////////////////
   const profileLetters = "Felipe".split("");
-
-  // Add your Portfolio filling this object.
-  // ////////////////////
-  const porfolioResults = [
-    {
-      url: "www.porfolioOne.com",
-      title: "Portofolio-One",
-      description: "Description of Portfolio-One"
-    },
-    {
-      url: "www.porfolioTwo.com",
-      title: "Portofolio-Two",
-      description: "Description of Portfolio-Two"
-    },
-    {
-      url: "www.porfolioThree.com",
-      title: "Portofolio-Three",
-      description: "Description of Portfolio-Three"
-    },
-    {
-      url: "www.porfolioFour.com",
-      title: "Portofolio-Four",
-      description: "Description of Portfolio-Four"
-    },
-  ]
 
   // This function will load your username
   // Also will change letter color from Username
@@ -58,63 +35,77 @@ function App() {
     return renderName;
   }
 
-  // This function will load portfolio
-  const renderPortfolio = () => {
-    const portfolioGroup = porfolioResults.map((portfolio, index) => {
-      return (
-        <div className="portfolio__item" key={`${portfolio.title}-${index}`}>
-          <p className="portfolio__item-url">{portfolio.url}</p>
-          <h2 className="portfolio__item-title">{portfolio.title}</h2>
-          <p className="portfolio__item-description">{portfolio.description}</p>
-        </div>
-      )
-    });
-    return portfolioGroup;
-  }
+  useEffect(() => {
+    const username = "cristianfelipe94";
+    const githubURL = `https://api.github.com/users/${username}/repos`;
   
+    const result = async () => {
+      await fetch(githubURL)
+      .then((response) => (response.json()))
+      .then((data) => {
+        console.log("Remember to return Data: ", data);
+        setRenderData(data);
+      })
+      .catch((err) => {
+        console.log("Response error: ", err);
+      });
+    }
+    result();
+  }, []);
+
   return (
-    <div className="App">
-      <div className="navigation">
-        <div className="navigation__top">
-          <p className="username">{profileName()}</p>
+      <div className="App">
+        <div className="navigation">
+          <div className="navigation__top">
+            <p className="username">{profileName()}</p>
 
-          <div className="searchbar">
-            <input className="searchbar__input" placeholder="Search for a portfolio or project"></input>
-            <span className="icon icon--x"></span>
-            <hr className="separator separator--vertical"></hr>
-            <span className="icon icon--voice"></span>
-            <span className="icon icon--search"></span>
+            <div className="searchbar">
+              <input className="searchbar__input" placeholder="Search for a portfolio or project"></input>
+              <span className="icon icon--x"></span>
+              <hr className="separator separator--vertical"></hr>
+              <span className="icon icon--voice"></span>
+              <span className="icon icon--search"></span>
+            </div>
+
+            <div className="profile">
+              <span className="icon icon--account"></span>
+            </div>
           </div>
 
-          <div className="profile">
-            <span className="icon icon--account"></span>
+          <div className="navigation__bottom">
+            <div className="navigation__bottom--left">
+              <NavigationBottom/>
+            </div>
+
+            <div className="navigation__bottom--right">
+                <p className="navigation__bottom_label">Settings</p>
+                <p className="navigation__bottom_label">Tools</p>
+            </div>
           </div>
         </div>
 
-        <div className="navigation__bottom">
-          <div className="navigation__bottom--left">
-            <NavigationBottom/>
+        <hr className="separator separator--horizontal"/>
+
+        <div className="content">
+          <div className="content__intro">
+            <p>About 26 years old and full of goals.</p>
           </div>
 
-          <div className="navigation__bottom--right">
-              <p className="navigation__bottom_label">Settings</p>
-              <p className="navigation__bottom_label">Tools</p>
+          <div className="content__portfolio">
+            { renderData.length > 0 ? 
+              renderData.map((element, index) => {
+                return (
+                  <div className="portfolio__item" key={`${element.name}-${index}`}>
+                    {element.clone_url ? <p className="portfolio__item-url">{element.clone_url}</p> : ""}
+                    {element.name ? <h2 className="portfolio__item-title">{element.name}</h2> : ""}
+                    {element.description ? <p className="portfolio__item-description">{element.description}</p> : ""}
+                  </div>
+                )
+              }) : ""
+            }
           </div>
         </div>
       </div>
-
-      <hr className="separator separator--horizontal"/>
-
-      <div className="content">
-        <div className="content__intro">
-          <p>About 26 years old and full of goals.</p>
-        </div>
-
-        <div className="content__portfolio">
-          {renderPortfolio()}
-        </div>
-      </div>
-    </div>
   );
 }
 
