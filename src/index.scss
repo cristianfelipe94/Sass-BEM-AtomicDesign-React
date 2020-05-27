@@ -14,6 +14,7 @@ $letter-yellow: #f4b705;
 $media-mobile: 780px;
 
 // Formatters
+//////////////
 body {
   background-color: white;
   margin: 0;
@@ -197,6 +198,10 @@ body {
       &-url {
         color: #4d5156;
         margin: 0;
+
+        @media only screen and (max-width: $media-mobile) {
+          font-size: 13px;
+        }
       }
   
       &-title {
@@ -204,6 +209,10 @@ body {
         text-decoration: underline;
         margin: 10px 0;
         cursor: pointer;
+
+        @media only screen and (max-width: $media-mobile) {
+          font-size: 20px;
+        }
       }
   
       &-description {

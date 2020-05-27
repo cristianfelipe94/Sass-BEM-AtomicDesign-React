@@ -97,7 +97,7 @@ function App() {
                 return (
                   <div className="portfolio__item" key={`${element.name}-${index}`}>
                     {element.clone_url ? <p className="portfolio__item-url">{element.clone_url}</p> : ""}
-                    {element.name ? <h2 className="portfolio__item-title">{element.name}</h2> : ""}
+                    {element.name ? <a className="portfolio__item-title" href={element.svn_url} target="_blank" rel="noopener noreferrer">{element.name}</a> : ""}
                     {element.description ? <p className="portfolio__item-description">{element.description}</p> : ""}
                   </div>
                 )
